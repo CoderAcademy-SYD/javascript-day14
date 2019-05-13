@@ -1,0 +1,14 @@
+<h1>Authors</h1>
+
+<a href="/authors/new">Create New Author</a>
+
+{{#each authors}}
+    <div>
+        <p>Name: {{ this.name }}</p>
+        <p>Bio: {{ this.bio }}</p>
+        <p>Gender: {{ this.gender }}</p>
+    </div>
+    <a href="/authors/{{this._id}}">Show</a>
+    <a href="/authors/{{this._id}}?_method=DELETE">Delete</a>
+    <hr />
+{{/each}}
