@@ -15,6 +15,12 @@ async function index(req, res) {
     res.render("author/index", {authors});
 }
 
+function make(req, res) {
+    //shows the form to create the resource
+    res.render("author/new");
+}
+
+
 module.exports = {
     create,
     index,
