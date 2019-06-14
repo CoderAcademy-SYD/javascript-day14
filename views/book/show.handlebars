@@ -1,5 +1,17 @@
 <h1>Book</h1>
 
 <p>Name: {{book.name}}</p>
-<p>Bio: {{book.bio}}</p>
-<p>Gender: {{book.gender}}</p>
+
+<form method="post" action="/books/{{book._id}}/comment">
+    <div>
+        <textarea name="body"></textarea>
+    </div>
+    <input type="submit" value="create comment" />
+</form>
+
+{{#each book.comments}}
+    <div>
+        <h4>{{this.created}}</h4>
+        <p>{{this.body}}</p>
+    </div>
+{{/each}}

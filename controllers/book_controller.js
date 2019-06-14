@@ -2,8 +2,8 @@ const BookModel = require("../database/models/book_model");
 
 async function create(req, res) {
     //logic for creating a resource
-    let {name} = req.body;
-    let book = await BookModel.create({ name })
+    let {name, author} = req.body;
+    let book = await BookModel.create({ name, author })
         .catch(err => res.status(500).send(err));
 
     res.redirect("/books");
@@ -22,7 +22,8 @@ function make(req, res) {
 
 async function show(req, res) {
     let { id } = req.params;
-    let book = await BookModel.findById(id);
+    let book = await BookModel.findById(id).populate("author");
+    console.log(book);
     res.render("book/show", { book });
 }
 
