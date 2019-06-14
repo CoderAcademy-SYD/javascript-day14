@@ -20,9 +20,38 @@ function make(req, res) {
     res.render("author/new");
 }
 
+async function show(req, res) {
+    let { id } = req.params;
+    let author = await AuthorModel.findById(id);
+    res.render("author/show", { author });
+}
+
+async function destroy(req, res) {
+    let { id } = req.params;
+    await AuthorModel.findByIdAndRemove(id);
+    res.redirect("/authors");
+}
+
+async function update(req, res) {
+    let { id } = req.params;
+    let { name, bio, gender } = req.body;
+
+    await AuthorModel.findByIdAndUpdate(id, {name, bio, gender});
+    res.redirect(`/authors/${id}`);
+}
+
+async function edit(req, res) {
+    let { id } = req.params;
+    const author = await AuthorModel.findById(id);
+    res.render("author/edit", { author });
+}
 
 module.exports = {
     create,
     index,
-    make
+    make,
+    show,
+    destroy,
+    update,
+    edit
 }

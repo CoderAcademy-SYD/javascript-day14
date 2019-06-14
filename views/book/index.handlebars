@@ -1,0 +1,13 @@
+<h1>Books</h1>
+
+<a href="/books/new">Create New Book</a>
+
+{{#each books}}
+    <div>
+        <p>Name: {{ this.name }}</p>
+    </div>
+    <a href="/books/{{this._id}}">View Book</a>
+    <a href="/books/{{this._id}}?_method=DELETE">Delete Book</a>
+    <hr />
+
+{{/each}}

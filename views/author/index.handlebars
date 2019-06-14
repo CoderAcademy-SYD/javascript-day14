@@ -8,5 +8,8 @@
         <p>Bio: {{ this.bio }}</p>
         <p>Gender: {{ this.gender }}</p>
     </div>
+    <a href="/authors/{{this._id}}">View Author</a>
+    <a href="/authors/{{this._id}}?_method=DELETE">Delete Author</a>
     <hr />
+
 {{/each}}
